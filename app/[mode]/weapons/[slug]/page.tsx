@@ -41,13 +41,14 @@ export default async function WeaponDetailPage({ params }: { params: { mode: str
       <div className="space-y-4">
         <h2 className="text-2xl font-black flex items-center gap-2"><Crosshair className="text-gaming-accent" /> لودآوت‌های پیشنهادی</h2>
         <div className="space-y-4">
-          {weapon.loadouts?.map((loadout: any) => (
-            <div key={loadout.id} className="glass-panel p-6 rounded-2xl space-y-3">
-              <h3 className="text-lg font-bold text-gaming-accent">{loadout.name}</h3>
-              <p className="text-sm text-gray-300">{loadout.description}</p>
-            </div>
-          ))}
-          {(!weapon.loadouts || weapon.loadouts.length === 0) => (
+          {weapon.loadouts && weapon.loadouts.length > 0 ? (
+            weapon.loadouts.map((loadout: any) => (
+              <div key={loadout.id} className="glass-panel p-6 rounded-2xl space-y-3">
+                <h3 className="text-lg font-bold text-gaming-accent">{loadout.name}</h3>
+                <p className="text-sm text-gray-300">{loadout.description}</p>
+              </div>
+            ))
+          ) : (
             <p className="text-gray-500 text-sm">لودآوتی برای این اسلحه ثبت نشده است.</p>
           )}
         </div>
